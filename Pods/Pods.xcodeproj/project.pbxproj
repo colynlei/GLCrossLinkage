@@ -1,0 +1,501 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C3935732B9E1AA4D913CB270A6DE807C /* Pods-GLCrossLinkage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 67666669ECB501DA7D7460CA98799DFA /* Pods-GLCrossLinkage-dummy.m */; };
+		E6DF57D8C6B9C4AAC061EF04C76EBD16 /* GLSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D2ACDD29D4BBFD719EC697839F764776 /* GLSegmentedControl.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F1E7844465B08FC08AB96713B862FE1D /* GLSegmentedControl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F676B98089E388F9707BE918DA434C31 /* GLSegmentedControl-dummy.m */; };
+		F58B436B5DC9D3B40BF58112DE88F737 /* GLSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = A7EE2BA48C541B44D1FA001ECD459699 /* GLSegmentedControl.h */; settings = {ATTRIBUTES = (Project, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A258A2B31A6646B62E904F9F1AB481B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F532B197B9957F0D75D1B770CE8E769;
+			remoteInfo = GLSegmentedControl;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1DBBB5955F321A70AA08218EFA38ED8D /* libPods-GLCrossLinkage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-GLCrossLinkage.a"; path = "libPods-GLCrossLinkage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24238B475068E33488333E02A25D4048 /* Pods-GLCrossLinkage-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GLCrossLinkage-acknowledgements.markdown"; sourceTree = "<group>"; };
+		26AEA77E620916C030A92EC6CD3A8FA3 /* Pods-GLCrossLinkage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GLCrossLinkage.debug.xcconfig"; sourceTree = "<group>"; };
+		2EBB995D1A274F4E6F7DE47E7E4BC551 /* GLSegmentedControl-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GLSegmentedControl-prefix.pch"; sourceTree = "<group>"; };
+		5F72729195A868C8355144BED5694F21 /* Pods-GLCrossLinkage-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GLCrossLinkage-acknowledgements.plist"; sourceTree = "<group>"; };
+		67666669ECB501DA7D7460CA98799DFA /* Pods-GLCrossLinkage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GLCrossLinkage-dummy.m"; sourceTree = "<group>"; };
+		6812F80F45B0DE2E649BE6EC17A2637B /* Pods-GLCrossLinkage-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GLCrossLinkage-resources.sh"; sourceTree = "<group>"; };
+		812F5FC5A906CA0D2EA0DF5406728331 /* GLSegmentedControl.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GLSegmentedControl.xcconfig; sourceTree = "<group>"; };
+		897BC272195A94456FF1E9C1D813D03C /* libGLSegmentedControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libGLSegmentedControl.a; path = libGLSegmentedControl.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A7EE2BA48C541B44D1FA001ECD459699 /* GLSegmentedControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GLSegmentedControl.h; path = GLSegmentedControl/GLSegmentedControl.h; sourceTree = "<group>"; };
+		B81046DD591FF1B9E87AC61F14932F45 /* Pods-GLCrossLinkage-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GLCrossLinkage-frameworks.sh"; sourceTree = "<group>"; };
+		BC9B67D19821F6534CCC11BBD935F75D /* Pods-GLCrossLinkage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GLCrossLinkage.release.xcconfig"; sourceTree = "<group>"; };
+		D2ACDD29D4BBFD719EC697839F764776 /* GLSegmentedControl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GLSegmentedControl.m; path = GLSegmentedControl/GLSegmentedControl.m; sourceTree = "<group>"; };
+		F676B98089E388F9707BE918DA434C31 /* GLSegmentedControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GLSegmentedControl-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		91E33F8FC5BE03F892F4FA69FEFFCEF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5FEDED92330216CF33E01E65505814F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		51E72232513B0A76F29161A1325CEFF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				897BC272195A94456FF1E9C1D813D03C /* libGLSegmentedControl.a */,
+				1DBBB5955F321A70AA08218EFA38ED8D /* libPods-GLCrossLinkage.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5922D295BD14B9EA4A6F39E8E3040D7F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				812F5FC5A906CA0D2EA0DF5406728331 /* GLSegmentedControl.xcconfig */,
+				F676B98089E388F9707BE918DA434C31 /* GLSegmentedControl-dummy.m */,
+				2EBB995D1A274F4E6F7DE47E7E4BC551 /* GLSegmentedControl-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GLSegmentedControl";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
+				B02F629B386F372F251754B2B130054F /* Pods */,
+				51E72232513B0A76F29161A1325CEFF3 /* Products */,
+				86DEE02CBE1EB7F96A23A86492D01EC3 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		86DEE02CBE1EB7F96A23A86492D01EC3 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E76D6D34B3BE58BA4EC1C32A2D72BBFB /* Pods-GLCrossLinkage */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		B02F629B386F372F251754B2B130054F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC0F4D9D6605A6B4218EC477F3086659 /* GLSegmentedControl */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E76D6D34B3BE58BA4EC1C32A2D72BBFB /* Pods-GLCrossLinkage */ = {
+			isa = PBXGroup;
+			children = (
+				24238B475068E33488333E02A25D4048 /* Pods-GLCrossLinkage-acknowledgements.markdown */,
+				5F72729195A868C8355144BED5694F21 /* Pods-GLCrossLinkage-acknowledgements.plist */,
+				67666669ECB501DA7D7460CA98799DFA /* Pods-GLCrossLinkage-dummy.m */,
+				B81046DD591FF1B9E87AC61F14932F45 /* Pods-GLCrossLinkage-frameworks.sh */,
+				6812F80F45B0DE2E649BE6EC17A2637B /* Pods-GLCrossLinkage-resources.sh */,
+				26AEA77E620916C030A92EC6CD3A8FA3 /* Pods-GLCrossLinkage.debug.xcconfig */,
+				BC9B67D19821F6534CCC11BBD935F75D /* Pods-GLCrossLinkage.release.xcconfig */,
+			);
+			name = "Pods-GLCrossLinkage";
+			path = "Target Support Files/Pods-GLCrossLinkage";
+			sourceTree = "<group>";
+		};
+		FC0F4D9D6605A6B4218EC477F3086659 /* GLSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				A7EE2BA48C541B44D1FA001ECD459699 /* GLSegmentedControl.h */,
+				D2ACDD29D4BBFD719EC697839F764776 /* GLSegmentedControl.m */,
+				5922D295BD14B9EA4A6F39E8E3040D7F /* Support Files */,
+			);
+			name = GLSegmentedControl;
+			path = GLSegmentedControl;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		473A3DF730278CB1D9EABC153463DD0A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6C0CF1587F651485C1F14EA9CCE65A4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F58B436B5DC9D3B40BF58112DE88F737 /* GLSegmentedControl.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3F532B197B9957F0D75D1B770CE8E769 /* GLSegmentedControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF911CF02A6C815378E24DF41CEA5D7C /* Build configuration list for PBXNativeTarget "GLSegmentedControl" */;
+			buildPhases = (
+				D6C0CF1587F651485C1F14EA9CCE65A4 /* Headers */,
+				E4B27830BE6A469360F782290FE72DA8 /* Sources */,
+				B5FEDED92330216CF33E01E65505814F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GLSegmentedControl;
+			productName = GLSegmentedControl;
+			productReference = 897BC272195A94456FF1E9C1D813D03C /* libGLSegmentedControl.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		66158CC151E4D3C81E4BE682A40EFEAE /* Pods-GLCrossLinkage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB5BA30943FA5E247A5065DE9776894D /* Build configuration list for PBXNativeTarget "Pods-GLCrossLinkage" */;
+			buildPhases = (
+				473A3DF730278CB1D9EABC153463DD0A /* Headers */,
+				E178743C23157B8387CAFE08D8925D13 /* Sources */,
+				91E33F8FC5BE03F892F4FA69FEFFCEF8 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B44330B21AB4E437340FE3081797E3D /* PBXTargetDependency */,
+			);
+			name = "Pods-GLCrossLinkage";
+			productName = "Pods-GLCrossLinkage";
+			productReference = 1DBBB5955F321A70AA08218EFA38ED8D /* libPods-GLCrossLinkage.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 51E72232513B0A76F29161A1325CEFF3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F532B197B9957F0D75D1B770CE8E769 /* GLSegmentedControl */,
+				66158CC151E4D3C81E4BE682A40EFEAE /* Pods-GLCrossLinkage */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E178743C23157B8387CAFE08D8925D13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3935732B9E1AA4D913CB270A6DE807C /* Pods-GLCrossLinkage-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4B27830BE6A469360F782290FE72DA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1E7844465B08FC08AB96713B862FE1D /* GLSegmentedControl-dummy.m in Sources */,
+				E6DF57D8C6B9C4AAC061EF04C76EBD16 /* GLSegmentedControl.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5B44330B21AB4E437340FE3081797E3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GLSegmentedControl;
+			target = 3F532B197B9957F0D75D1B770CE8E769 /* GLSegmentedControl */;
+			targetProxy = A258A2B31A6646B62E904F9F1AB481B2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		11DC1F73D389EB65FD8F1D6706D7D4CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 812F5FC5A906CA0D2EA0DF5406728331 /* GLSegmentedControl.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/GLSegmentedControl/GLSegmentedControl-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = GLSegmentedControl;
+				PRODUCT_NAME = GLSegmentedControl;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5E30416E699D8342739A7529C17E2FDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26AEA77E620916C030A92EC6CD3A8FA3 /* Pods-GLCrossLinkage.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		60DAF49CA7A9F362148D49C3C3123B2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		64D7E3AB8CC9116117F84EEED42A0C61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC9B67D19821F6534CCC11BBD935F75D /* Pods-GLCrossLinkage.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4FC2C05EEBAC401B38700D61ADEC52E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 812F5FC5A906CA0D2EA0DF5406728331 /* GLSegmentedControl.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/GLSegmentedControl/GLSegmentedControl-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = GLSegmentedControl;
+				PRODUCT_NAME = GLSegmentedControl;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C4EAA84F44D044E108500A81C635F21E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60DAF49CA7A9F362148D49C3C3123B2A /* Debug */,
+				C4EAA84F44D044E108500A81C635F21E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB5BA30943FA5E247A5065DE9776894D /* Build configuration list for PBXNativeTarget "Pods-GLCrossLinkage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E30416E699D8342739A7529C17E2FDC /* Debug */,
+				64D7E3AB8CC9116117F84EEED42A0C61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF911CF02A6C815378E24DF41CEA5D7C /* Build configuration list for PBXNativeTarget "GLSegmentedControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4FC2C05EEBAC401B38700D61ADEC52E /* Debug */,
+				11DC1F73D389EB65FD8F1D6706D7D4CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

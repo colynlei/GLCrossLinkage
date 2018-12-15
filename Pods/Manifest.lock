@@ -1,0 +1,16 @@
+PODS:
+  - GLSegmentedControl (1.2.4)
+
+DEPENDENCIES:
+  - GLSegmentedControl
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GLSegmentedControl
+
+SPEC CHECKSUMS:
+  GLSegmentedControl: c44bd3b9cc8adf29f10104eb9bf92db984151d38
+
+PODFILE CHECKSUM: 059e74c99875cfca92323e5f5a2d1b2db95cd618
+
+COCOAPODS: 1.5.3
