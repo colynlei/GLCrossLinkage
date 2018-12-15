@@ -14,6 +14,13 @@
 		7A00D54F21C500750026D167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A00D54E21C500750026D167 /* Assets.xcassets */; };
 		7A00D55221C500750026D167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A00D55021C500750026D167 /* LaunchScreen.storyboard */; };
 		7A00D55521C500750026D167 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A00D55421C500750026D167 /* main.m */; };
+		7A00D55E21C5036F0026D167 /* GLCrossLinkageMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A00D55D21C5036F0026D167 /* GLCrossLinkageMainViewController.m */; };
+		7A00D56121C503820026D167 /* GLCrossLinkageSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A00D56021C503820026D167 /* GLCrossLinkageSubViewController.m */; };
+		7A00D56421C505F20026D167 /* GLFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A00D56321C505F20026D167 /* GLFirstViewController.m */; };
+		7A00D56721C506380026D167 /* GLSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A00D56621C506380026D167 /* GLSecondViewController.m */; };
+		7A00D56A21C5065A0026D167 /* GLThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A00D56921C5065A0026D167 /* GLThirdViewController.m */; };
+		7A00D56D21C5067E0026D167 /* GLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A00D56C21C5067E0026D167 /* GLMainViewController.m */; };
+		7A00D57121C57F960026D167 /* GLCrossLinkageBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A00D57021C57F960026D167 /* GLCrossLinkageBaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +34,21 @@
 		7A00D55121C500750026D167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A00D55321C500750026D167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A00D55421C500750026D167 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7A00D55C21C5036F0026D167 /* GLCrossLinkageMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCrossLinkageMainViewController.h; sourceTree = "<group>"; };
+		7A00D55D21C5036F0026D167 /* GLCrossLinkageMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLCrossLinkageMainViewController.m; sourceTree = "<group>"; };
+		7A00D55F21C503820026D167 /* GLCrossLinkageSubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCrossLinkageSubViewController.h; sourceTree = "<group>"; };
+		7A00D56021C503820026D167 /* GLCrossLinkageSubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLCrossLinkageSubViewController.m; sourceTree = "<group>"; };
+		7A00D56221C505F20026D167 /* GLFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFirstViewController.h; sourceTree = "<group>"; };
+		7A00D56321C505F20026D167 /* GLFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLFirstViewController.m; sourceTree = "<group>"; };
+		7A00D56521C506380026D167 /* GLSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSecondViewController.h; sourceTree = "<group>"; };
+		7A00D56621C506380026D167 /* GLSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLSecondViewController.m; sourceTree = "<group>"; };
+		7A00D56821C5065A0026D167 /* GLThirdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLThirdViewController.h; sourceTree = "<group>"; };
+		7A00D56921C5065A0026D167 /* GLThirdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLThirdViewController.m; sourceTree = "<group>"; };
+		7A00D56B21C5067E0026D167 /* GLMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLMainViewController.h; sourceTree = "<group>"; };
+		7A00D56C21C5067E0026D167 /* GLMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLMainViewController.m; sourceTree = "<group>"; };
+		7A00D56F21C57F960026D167 /* GLCrossLinkageBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCrossLinkageBaseViewController.h; sourceTree = "<group>"; };
+		7A00D57021C57F960026D167 /* GLCrossLinkageBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLCrossLinkageBaseViewController.m; sourceTree = "<group>"; };
+		7A00D57221C581070026D167 /* GLCrossLinkageMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCrossLinkageMacro.h; sourceTree = "<group>"; };
 		C19EBAF1854C4A188427CE72 /* Pods-GLCrossLinkage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLCrossLinkage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GLCrossLinkage/Pods-GLCrossLinkage.debug.xcconfig"; sourceTree = "<group>"; };
 		C276B7FF5D0E1F0BFF2BE846 /* libPods-GLCrossLinkage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GLCrossLinkage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E41DDBB98AAB41D9D2652F8B /* Pods-GLCrossLinkage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GLCrossLinkage.release.xcconfig"; path = "Pods/Target Support Files/Pods-GLCrossLinkage/Pods-GLCrossLinkage.release.xcconfig"; sourceTree = "<group>"; };
@@ -74,11 +96,19 @@
 		7A00D54421C500740026D167 /* GLCrossLinkage */ = {
 			isa = PBXGroup;
 			children = (
+				7A00D55B21C5019B0026D167 /* GLCrossLinkageViewController */,
 				7A00D54521C500740026D167 /* AppDelegate.h */,
 				7A00D54621C500740026D167 /* AppDelegate.m */,
 				7A00D54821C500740026D167 /* ViewController.h */,
 				7A00D54921C500740026D167 /* ViewController.m */,
-				7A00D55B21C5019B0026D167 /* GLCrossLinkageViewController */,
+				7A00D56B21C5067E0026D167 /* GLMainViewController.h */,
+				7A00D56C21C5067E0026D167 /* GLMainViewController.m */,
+				7A00D56221C505F20026D167 /* GLFirstViewController.h */,
+				7A00D56321C505F20026D167 /* GLFirstViewController.m */,
+				7A00D56521C506380026D167 /* GLSecondViewController.h */,
+				7A00D56621C506380026D167 /* GLSecondViewController.m */,
+				7A00D56821C5065A0026D167 /* GLThirdViewController.h */,
+				7A00D56921C5065A0026D167 /* GLThirdViewController.m */,
 				7A00D54B21C500740026D167 /* Main.storyboard */,
 				7A00D54E21C500750026D167 /* Assets.xcassets */,
 				7A00D55021C500750026D167 /* LaunchScreen.storyboard */,
@@ -91,6 +121,13 @@
 		7A00D55B21C5019B0026D167 /* GLCrossLinkageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7A00D56F21C57F960026D167 /* GLCrossLinkageBaseViewController.h */,
+				7A00D57021C57F960026D167 /* GLCrossLinkageBaseViewController.m */,
+				7A00D55C21C5036F0026D167 /* GLCrossLinkageMainViewController.h */,
+				7A00D55D21C5036F0026D167 /* GLCrossLinkageMainViewController.m */,
+				7A00D55F21C503820026D167 /* GLCrossLinkageSubViewController.h */,
+				7A00D56021C503820026D167 /* GLCrossLinkageSubViewController.m */,
+				7A00D57221C581070026D167 /* GLCrossLinkageMacro.h */,
 			);
 			path = GLCrossLinkageViewController;
 			sourceTree = "<group>";
@@ -130,6 +167,7 @@
 		7A00D53A21C500740026D167 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = GL;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "雷国林";
 				TargetAttributes = {
@@ -200,8 +238,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A00D54A21C500740026D167 /* ViewController.m in Sources */,
+				7A00D56121C503820026D167 /* GLCrossLinkageSubViewController.m in Sources */,
+				7A00D56721C506380026D167 /* GLSecondViewController.m in Sources */,
+				7A00D56421C505F20026D167 /* GLFirstViewController.m in Sources */,
+				7A00D55E21C5036F0026D167 /* GLCrossLinkageMainViewController.m in Sources */,
+				7A00D56D21C5067E0026D167 /* GLMainViewController.m in Sources */,
 				7A00D55521C500750026D167 /* main.m in Sources */,
+				7A00D57121C57F960026D167 /* GLCrossLinkageBaseViewController.m in Sources */,
 				7A00D54721C500740026D167 /* AppDelegate.m in Sources */,
+				7A00D56A21C5065A0026D167 /* GLThirdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
