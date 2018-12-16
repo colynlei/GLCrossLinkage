@@ -12,6 +12,9 @@
 //悬停视图标识
 #define HoverView_tag 329875
 
+static NSString *SubScrollViewContentOffsetChange = @"SubScrollViewContentOffsetChange";
+static NSString *SubScrollViewLastContentOffset = @"SubScrollViewLastContentOffset";
+static NSString *TopViewFrameChangeNotification = @"TopViewFrameChangeNotification";
 
 //屏幕尺寸
 #define gl_ScreenSize \

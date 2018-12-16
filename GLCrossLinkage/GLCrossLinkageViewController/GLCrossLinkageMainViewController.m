@@ -74,6 +74,8 @@
     CGFloat h1 = self.headerView?CGRectGetMaxY(self.headerView.frame):0;
     CGFloat h2 = self.headerView?CGRectGetMaxY(self.headerHoverView.frame):0;
     self.topView.frame = CGRectMake(0, 0, self.contentView.frame.size.width, (h1>h2)?h1:h2);
+    [self.topView bringSubviewToFront:self.headerHoverView];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TopViewFrameChangeNotification object:nil];
 }
 
 - (void)setHeaderView:(UIView *)headerView {
@@ -101,13 +103,19 @@
     if (!subViewControllers || !subViewControllers.count) return;
     CGFloat w = self.contentViewFrame.size.width;
     CGFloat h = self.contentViewFrame.size.height;
+    __weak typeof(self) weakSelf = self;
     for (NSInteger i = 0; i < subViewControllers.count; i++) {
         GLCrossLinkageSubViewController *vc = subViewControllers[i];
         vc.view.frame = CGRectMake(i*w, 0, w, h);
         vc.topView = self.topView;
+        vc.index = i;
         vc.view.tag = subView_tag +i;
         [self.contentView addSubview:vc.view];
         [self addChildViewController:vc];
+        vc.topViewFrameChangeBlock = ^(CGFloat alpha) {
+            
+
+        };
     }
     self.contentView.contentSize = CGSizeMake(subViewControllers.count*w, h);
 }
@@ -120,6 +128,23 @@
     }
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    NSInteger a = scrollView.contentOffset.x/scrollView.frame.size.width;
+    NSLog(@"当前是第%ld页",(long)a);
+    
+    UIViewController *currentVC = self.subViewControllers[a];
+    
+    for (GLCrossLinkageSubViewController *vc in self.subViewControllers) {
+        vc.selectedIndex = a;
+        if (vc == currentVC) continue;
+        [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"%@%p",SubScrollViewLastContentOffset,vc] object:nil];
+    }
+    for (NSInteger i = 0; i < self.subViewControllers.count; i++) {
+        if ( i == a) continue;
+        
+    }
+}
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];

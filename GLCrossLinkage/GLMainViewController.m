@@ -29,7 +29,7 @@
     
     self.subViewControllers = @[vc1,vc2,vc3];
     
-    self.contentViewFrame = CGRectMake(0, gl_NavbarHeight, self.view.frame.size.width, self.view.frame.size.height-gl_NavbarHeight);
+    self.contentViewFrame = CGRectMake(0, gl_NavbarHeight, self.view.frame.size.width, self.view.frame.size.height-gl_NavbarHeight-gl_BottomSafeHeight);
 
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.contentViewFrame.size.width, 150)];
     headerView.backgroundColor = [UIColor redColor];
