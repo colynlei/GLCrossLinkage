@@ -35,14 +35,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcX-VW-zef">
-                                <rect key="frame" x="157.5" y="313.5" width="60" height="40"/>
+                                <rect key="frame" x="137.5" y="303.5" width="100" height="60"/>
+                                <color key="backgroundColor" red="0.6251428459942957" green="0.95353132486343384" blue="0.6849748033572195" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="ged-Nb-y7j"/>
-                                    <constraint firstAttribute="height" constant="40" id="htk-Hi-BF3"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ged-Nb-y7j"/>
+                                    <constraint firstAttribute="height" constant="60" id="htk-Hi-BF3"/>
                                 </constraints>
-                                <state key="normal" title="进入"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="进入">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="enterBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aSi-ns-wBN"/>
+                                    <action selector="enterBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sov-Dt-WrJ"/>
                                 </connections>
                             </button>
                         </subviews>

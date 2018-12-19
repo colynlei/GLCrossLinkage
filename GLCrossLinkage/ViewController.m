@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "GLMainViewController.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+- (IBAction)enterBtnAction:(UIButton *)sender {
+    [self.navigationController pushViewController:[[GLMainViewController alloc] init] animated:YES];
 }
 
 @end
