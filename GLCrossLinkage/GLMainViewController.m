@@ -7,8 +7,14 @@
 //
 
 #import "GLMainViewController.h"
+#import "GLFirstViewController.h"
+#import "GLSecondViewController.h"
+#import "GLThirdViewController.h"
+#import "GLHeaderHoverView.h"
 
 @interface GLMainViewController ()
+
+//@property (nonatomic, strong) GLHeaderHoverView *headerHoverView;
 
 @end
 
@@ -17,8 +23,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor brownColor];
-//    self.mainScrollViewFrame = CGRectMake(0, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.mainScrollViewFrame = CGRectMake(0, gl_NavbarHeight, self.view.frame.size.width, self.view.frame.size.height-gl_NavbarHeight);
+    
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 150)];
+    self.headerView.backgroundColor = [UIColor yellowColor];
+    
+    GLHeaderHoverView *hoverView = [[GLHeaderHoverView alloc] initWithFrame:CGRectMake(0, 0, 0, 50)];
+    hoverView.segmentedControl.selectedIndex = 0;
+    hoverView.backgroundColor = [UIColor greenColor];
+    gl_WeakSelf(self);
+    hoverView.itemSelectedBlock = ^(NSInteger index) {
+        weakself.selectedIndex = index;
+    };
+    self.headerHoverView = hoverView;
+    self.selectedIndex = hoverView.segmentedControl.selectedIndex;
+    
+    self.subViewControllers = @[[[GLFirstViewController alloc] init],
+                                [[GLSecondViewController alloc] init],
+                                [[GLThirdViewController alloc] init]];
+    
+    
+    
+}
+
+- (void)selectedIndexChange {
+    [super selectedIndexChange];
+    GLHeaderHoverView *hoverView = (GLHeaderHoverView *)self.headerHoverView;
+    hoverView.segmentedControl.selectedIndex = self.selectedIndex;
 }
 
 /*

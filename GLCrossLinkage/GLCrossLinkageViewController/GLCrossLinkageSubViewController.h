@@ -12,6 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GLCrossLinkageSubViewController : UIViewController
 
+//自控制器UIScrollView、UITableView、UICollectionView等指针。
+@property (nonatomic, strong) UIScrollView *scrollView;
+
+@property (nonatomic, assign) NSInteger currentIndex;
+
+@property (nonatomic, assign) NSInteger selectedIndex;
+
+- (void)currentSelected;//当前为选中
+
 @end
 
 NS_ASSUME_NONNULL_END

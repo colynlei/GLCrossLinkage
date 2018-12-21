@@ -19,6 +19,8 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)currentSelected{}
+
 /*
 #pragma mark - Navigation
 
