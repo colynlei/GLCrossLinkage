@@ -33,6 +33,8 @@
 @property (nonatomic, strong) GLLabel *selectedTitleLabel;
 @property (nonatomic, strong) NSMutableArray *titleLabelWArray;
 
+@property (nonatomic, assign) BOOL isLayoutSubViews;
+
 @end
 
 @implementation GLSegmentedControl
@@ -196,7 +198,9 @@
         case GLSegmentedControlTitleGapTypeNone:
         {
             if (all_w > Self_W) {
-                NSLog(@"所有字体总宽度大于当前视图所容许宽");
+                if (self.isLayoutSubViews) {
+                    NSLog(@"所有字体总宽度大于当前视图所容许宽度");
+                }
             } else {
                 gap = 0;
                 left = 0;
@@ -211,7 +215,9 @@
         {
             
             if (all_w > Self_W) {
-                NSLog(@"所有字体总宽度大于当前视图所容许宽");
+                if (self.isLayoutSubViews) {
+                    NSLog(@"所有字体总宽度大于当前视图所容许宽度");
+                }
             } else {
                 gap = (Self_W-all_w)/(self.titles.count+1);
                 left = gap;
@@ -222,7 +228,9 @@
         case GLSegmentedControlTitleGapTypeEqualGapWithoutBoth:
         {
             if (all_w > Self_W-left-right) {
-                NSLog(@"所有字体总宽度大于当前视图所容许宽度");
+                if (self.isLayoutSubViews) {
+                    NSLog(@"所有字体总宽度大于当前视图所容许宽度");
+                }
             } else {
                 gap = (Self_W-all_w-left-right)/(self.titles.count-1);
             }
@@ -263,7 +271,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
+    self.isLayoutSubViews = YES;
     [self.scrollView bringSubviewToFront:self.lineView];
     self.scrollView.frame = self.bounds;
     self.scrollView.contentInset = UIEdgeInsetsZero;

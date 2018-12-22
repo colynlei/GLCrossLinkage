@@ -6,5 +6,6 @@ inhibit_all_warnings!
 target "GLCrossLinkage" do
 
 pod 'GLSegmentedControl'
+pod 'MJRefresh'
 
 end
