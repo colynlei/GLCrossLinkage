@@ -26,33 +26,35 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    
     self.mainScrollViewFrame = CGRectMake(0, gl_NavbarHeight, self.view.frame.size.width, self.view.frame.size.height-gl_NavbarHeight);
+    
+    self.selectedIndex = 1;
+
     
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 150)];
     self.headerView.backgroundColor = [UIColor yellowColor];
     
     GLHeaderHoverView *hoverView = [[GLHeaderHoverView alloc] initWithFrame:CGRectMake(0, 0, 0, 50)];
-    hoverView.segmentedControl.selectedIndex = 0;
+    hoverView.segmentedControl.selectedIndex = 1;
     hoverView.backgroundColor = [UIColor greenColor];
     gl_WeakSelf(self);
     hoverView.itemSelectedBlock = ^(NSInteger index) {
         weakself.selectedIndex = index;
     };
     self.headerHoverView = hoverView;
-    self.selectedIndex = hoverView.segmentedControl.selectedIndex;
     
     self.subViewControllers = @[[[GLFirstViewController alloc] init],
                                 [[GLSecondViewController alloc] init],
                                 [[GLThirdViewController alloc] init]];
-    
-    
-    
 }
 
 - (void)selectedIndexChange {
     [super selectedIndexChange];
     GLHeaderHoverView *hoverView = (GLHeaderHoverView *)self.headerHoverView;
-    hoverView.segmentedControl.selectedIndex = self.selectedIndex;
+    if ([hoverView isKindOfClass:GLHeaderHoverView.class]) {
+        hoverView.segmentedControl.selectedIndex = self.selectedIndex;
+    }
 }
 
 /*

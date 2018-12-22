@@ -39,7 +39,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -56,7 +56,6 @@
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     return cell;
 }
-
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
