@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GLCrossLinkageMacro.h"
 #import "GLCrossLinkageSubViewController.h"
+#import <MJRefresh.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CGFloat HoverViewOffsetY;//悬浮框悬停位置向下偏移量。一般是偏移导航栏的高度，默认0
 
+//下拉刷新，传入MJRefreshHeader
+@property (nonatomic, strong) MJRefreshHeader *gl_mj_header;
 
 
 

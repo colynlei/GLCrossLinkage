@@ -8,7 +8,6 @@
 
 #import "GLCrossLinkageViewController.h"
 
-
 @interface GLDynamicItem : NSObject<UIDynamicItem>
 
 @property (nonatomic, assign) CGPoint center;
@@ -86,9 +85,13 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesturerRecognizerAction:)];
         pan.delegate = self;
         [_mainScrollView addGestureRecognizer:pan];
-        
     }
     return _mainScrollView;
+}
+
+- (void)setGl_mj_header:(MJRefreshHeader *)gl_mj_header {
+    _gl_mj_header = gl_mj_header;
+    self.mainScrollView.mj_header = gl_mj_header;
 }
 
 - (UIScrollView *)contentScrollView {
@@ -229,7 +232,7 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
             if (_isVertical) {
                 CGFloat distanceY = [pan translationInView:self.mainScrollView].y;
 //                NSLog(@"移动的距离：%f",distanceY);
-                [self scrollControlWithVerticalDistance:distanceY];
+                [self scrollControlWithVerticalDistance:distanceY state:pan.state];
             }
         }
             break;
@@ -237,9 +240,16 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         {
             if (_isVertical) {
 //                [[NSNotificationCenter defaultCenter] postNotificationName:GLMainScrollViewGestureRecognizerStateEnded object:self.mainScrollView];
-//                if (self.mainScrollView.contentOffset.y <= -100) {
-//
-//                }
+                if (self.mainScrollView.contentOffset.y <= self.mainScrollView.mj_header.frame.origin.y) {
+//                    UIEdgeInsets inset = self.mainScrollView.contentInset;
+//                    inset.top = 100;
+//                    self.mainScrollView.contentInset = inset;
+                    if (!self.mainScrollView.mj_header.refreshing) {
+                        [self.mainScrollView.mj_header beginRefreshing];
+                        NSLog(@"开始刷新");
+                    }
+                }
+
                 {
                     self.dynamicItem.center = CGPointZero;
                     CGPoint velocity = [pan velocityInView:self.mainScrollView];
@@ -252,7 +262,7 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
                     inertialBehavior.action = ^{
                         if (self->_isVertical) {
                             CGFloat currentY = weakself.dynamicItem.center.y - lastCenter.y;
-                            [weakself scrollControlWithVerticalDistance:currentY];
+                            [weakself scrollControlWithVerticalDistance:currentY state:pan.state];
                         }
                         lastCenter = weakself.dynamicItem.center;
                     };
@@ -269,8 +279,8 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
     [pan setTranslation:CGPointZero inView:self.mainScrollView];
 }
 
-- (void)scrollControlWithVerticalDistance:(CGFloat)distanceY {
-    if (self.mainScrollView.contentOffset.y >= _mainMaxOffsetY || (self.subScrollView.contentOffset.y != 0 && distanceY >= 0)) {
+- (void)scrollControlWithVerticalDistance:(CGFloat)distanceY state:(UIGestureRecognizerState)state{
+    if (self.mainScrollView.contentOffset.y >= _mainMaxOffsetY || (self.subScrollView.contentOffset.y && distanceY >= 0)) {
 //        NSLog(@"111");
         CGFloat subOffsetY = self.subScrollView.contentOffset.y - distanceY;
         if (subOffsetY < 0) {
@@ -283,7 +293,7 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
     } else {
 //        NSLog(@"333");
         CGFloat mainOffsetY = self.mainScrollView.contentOffset.y - distanceY;
-        if (mainOffsetY < 0) {
+        if (mainOffsetY < -self.mainScrollView.contentInset.top) {
             mainOffsetY = self.mainScrollView.contentOffset.y - rubberBandDistance(distanceY, self.mainScrollView.frame.size.height);
         } else if (mainOffsetY > _mainMaxOffsetY) {
             mainOffsetY = _mainMaxOffsetY;
@@ -294,14 +304,14 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         }
     }
     
-    BOOL isOutside = self.mainScrollView.contentOffset.y < 0 || self.subScrollView.contentOffset.y > (self.subScrollView.contentSize.height - self.subScrollView.frame.size.height);
-    BOOL isMore = self.subScrollView.contentSize.height >= self.subScrollView.frame.size.height || self.mainScrollView.contentOffset.y >= _mainMaxOffsetY || self.mainScrollView.contentOffset.y < 0;
+    BOOL isOutside = self.mainScrollView.contentOffset.y < -self.mainScrollView.contentInset.top || self.subScrollView.contentOffset.y > (self.subScrollView.contentSize.height - self.subScrollView.frame.size.height);
+    BOOL isMore = self.subScrollView.contentSize.height >= self.subScrollView.frame.size.height || self.mainScrollView.contentOffset.y >= _mainMaxOffsetY || self.mainScrollView.contentOffset.y < -self.mainScrollView.contentInset.top;
     if (isOutside && isMore && self.decelerationBehavior && !self.springBehavior) {
         CGPoint point = CGPointZero;
         BOOL isMain = NO;
-        if (self.mainScrollView.contentOffset.y < 0) {
+        if (self.mainScrollView.contentOffset.y < -self.mainScrollView.contentInset.top) {
             self.dynamicItem.center = self.mainScrollView.contentOffset;
-            point = CGPointZero;
+            point = CGPointMake(0, -self.mainScrollView.contentInset.top);
             isMain = YES;
         } else if (self.subScrollView.contentOffset.y > (self.subScrollView.contentSize.height-self.subScrollView.frame.size.height)) {
             self.dynamicItem.center = self.subScrollView.contentOffset;
@@ -322,10 +332,10 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
             if (isMain) {
                 weakself.mainScrollView.contentOffset = weakself.dynamicItem.center;
                 if (weakself.mainScrollView.contentOffset.y == 0) {
-                    self.subScrollView.contentOffset = CGPointZero;
+                    weakself.subScrollView.contentOffset = CGPointZero;
                 }
             } else {
-                weakself.subScrollView.contentOffset = self.dynamicItem.center;
+                weakself.subScrollView.contentOffset = weakself.dynamicItem.center;
             }
         };
         [self.animator addBehavior:springBehavior];
@@ -378,6 +388,10 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         }
     }
     
+}
+
+- (void)dealloc {
+    NSLog(@"===== %@ release =====",NSStringFromClass(self.class));
 }
 
 /*
