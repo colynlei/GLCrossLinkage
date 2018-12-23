@@ -27,10 +27,10 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     
-    self.mainScrollViewFrame = CGRectMake(0, gl_NavbarHeight, self.view.frame.size.width, self.view.frame.size.height-gl_NavbarHeight);
+    self.mainScrollViewFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
     self.selectedIndex = 1;
-
+    self.HoverViewOffsetY = gl_NavbarHeight;
     
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 150)];
     self.headerView.backgroundColor = [UIColor yellowColor];

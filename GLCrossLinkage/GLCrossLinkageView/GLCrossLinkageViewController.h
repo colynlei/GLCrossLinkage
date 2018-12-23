@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 //页面当前显示的是哪一个view
 @property (nonatomic, assign) NSInteger selectedIndex;
 
+@property (nonatomic, assign) CGFloat HoverViewOffsetY;//悬浮框悬停位置向下偏移量。一般是偏移导航栏的高度，默认0
+
 
 
 

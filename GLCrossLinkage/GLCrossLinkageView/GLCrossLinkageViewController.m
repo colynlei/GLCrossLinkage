@@ -141,6 +141,11 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
     [self resetMainScrollViewContentSize];
 }
 
+- (void)setHoverViewOffsetY:(CGFloat)HoverViewOffsetY {
+    _HoverViewOffsetY = HoverViewOffsetY;
+    _mainMaxOffsetY = self.headerView.frame.size.height-HoverViewOffsetY;
+}
+
 - (void)setSubViewControllers:(NSArray<GLCrossLinkageSubViewController *> *)subViewControllers {
     _subViewControllers = subViewControllers;
     if (subViewControllers == nil || subViewControllers.count == 0) return;
@@ -161,10 +166,11 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
 
 
 - (void)resetMainScrollViewContentSize {
-    _mainMaxOffsetY = self.headerView.frame.size.height;
+//    _mainMaxOffsetY = self.headerView.frame.size.height+self.HoverViewOffsetY;
+    [self setHoverViewOffsetY:self.HoverViewOffsetY];
     self.headerView.frame = CGRectMake(0, 0, self.mainScrollView.frame.size.width, self.headerView.frame.size.height);
     self.headerHoverView.frame = CGRectMake(0, self.headerView.frame.size.height, self.mainScrollView.frame.size.width, self.headerHoverView.frame.size.height);
-    self.contentScrollView.frame = CGRectMake(0, self.headerHoverView.frame.origin.y+self.headerHoverView.frame.size.height, self.mainScrollView.frame.size.width, self.mainScrollView.frame.size.height-self.headerHoverView.frame.size.height);
+    self.contentScrollView.frame = CGRectMake(0, self.headerHoverView.frame.origin.y+self.headerHoverView.frame.size.height, self.mainScrollView.frame.size.width, self.mainScrollView.frame.size.height-self.headerHoverView.frame.size.height-self.HoverViewOffsetY);
 
     CGFloat contentSize_h = self.headerHoverView.frame.origin.y+self.mainScrollView.frame.size.height;
     self.mainScrollView.contentSize = CGSizeMake(self.mainScrollView.frame.size.width, contentSize_h);
