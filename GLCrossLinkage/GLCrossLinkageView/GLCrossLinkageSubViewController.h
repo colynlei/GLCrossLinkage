@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLCrossLinkageMacro.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,9 +16,17 @@ NS_ASSUME_NONNULL_BEGIN
 //自控制器UIScrollView、UITableView、UICollectionView等指针。
 @property (nonatomic, strong) UIScrollView *scrollView;
 
+//当前控制索引
 @property (nonatomic, assign) NSInteger currentIndex;
 
+//当前选中的控制器索引
 @property (nonatomic, assign) NSInteger selectedIndex;
+
+//下拉刷新，传入MJRefreshHeader
+@property (nonatomic, strong) MJRefreshHeader *gl_mj_header;
+
+//下拉刷新结束
+@property (nonatomic, copy) void(^gl_mj_header_refreshEndBlock)(NSInteger currentIndex);
 
 - (void)currentSelected;//当前为选中
 

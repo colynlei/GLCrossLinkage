@@ -9,6 +9,7 @@
 #ifndef GLCrossLinkageMacro_h
 #define GLCrossLinkageMacro_h
 
+#import <MJRefresh.h>
 
 static NSString *GLMainScrollViewGestureRecognizerStateBegan = @"GLMainScrollViewGestureRecognizerStateBegan";
 static NSString *GLMainScrollViewGestureRecognizerStateEnded = @"GLMainScrollViewGestureRecognizerStateEnded";

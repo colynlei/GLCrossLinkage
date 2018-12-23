@@ -46,6 +46,7 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
 @property (nonatomic, strong) UIScrollView *contentScrollView;
 @property (nonatomic, strong) UIScrollView *subScrollView;
 
+
 @property (nonatomic, strong) UIDynamicAnimator *animator;
 @property (nonatomic, strong) GLDynamicItem *dynamicItem;
 @property (nonatomic, weak) UIDynamicItemBehavior *decelerationBehavior;
@@ -87,11 +88,6 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         [_mainScrollView addGestureRecognizer:pan];
     }
     return _mainScrollView;
-}
-
-- (void)setGl_mj_header:(MJRefreshHeader *)gl_mj_header {
-    _gl_mj_header = gl_mj_header;
-    self.mainScrollView.mj_header = gl_mj_header;
 }
 
 - (UIScrollView *)contentScrollView {
@@ -149,11 +145,20 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
     _mainMaxOffsetY = self.headerView.frame.size.height-HoverViewOffsetY;
 }
 
+- (void)setSelectedIndex:(NSInteger)selectedIndex {
+    _selectedIndex = selectedIndex;
+    [self selectedIndexChange];
+    if (self.subViewControllers && self.subViewControllers.count) {
+        [self.contentScrollView setContentOffset:CGPointMake(selectedIndex*self.contentScrollView.frame.size.width, 0) animated:YES];
+    }
+}
+
 - (void)setSubViewControllers:(NSArray<GLCrossLinkageSubViewController *> *)subViewControllers {
     _subViewControllers = subViewControllers;
     if (subViewControllers == nil || subViewControllers.count == 0) return;
     CGFloat w = self.mainScrollView.frame.size.width;
     CGFloat h = self.contentScrollView.frame.size.height;
+    gl_WeakSelf(self);
     for (NSInteger i = 0; i < subViewControllers.count; i++) {
         GLCrossLinkageSubViewController *vc = subViewControllers[i];
         vc.view.frame = CGRectMake(i*w, 0, w, h);
@@ -161,6 +166,13 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         vc.currentIndex = i;
         [self.contentScrollView addSubview:vc.view];
         [self addChildViewController:vc];
+        vc.gl_mj_header_refreshEndBlock = ^(NSInteger currentIndex) {
+            [weakself.mainScrollView.mj_header endRefreshingWithCompletionBlock:^{
+                NSLog(@"刷新结束==%ld",currentIndex);
+                GLCrossLinkageSubViewController *vc = weakself.subViewControllers[weakself.selectedIndex];
+                weakself.mainScrollView.mj_header = vc.gl_mj_header;
+            }];
+        };
     }
     self.contentScrollView.contentSize = CGSizeMake(subViewControllers.count*w, h);
     [self.contentScrollView setContentOffset:CGPointMake(self.selectedIndex*self.contentScrollView.frame.size.width, 0) animated:NO];
@@ -187,14 +199,6 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         }
         self.contentScrollView.contentSize = CGSizeMake(self.subViewControllers.count*w, h);
         [self.contentScrollView setContentOffset:CGPointMake(self.selectedIndex*self.contentScrollView.frame.size.width, 0) animated:NO];
-    }
-}
-
-- (void)setSelectedIndex:(NSInteger)selectedIndex {
-    _selectedIndex = selectedIndex;
-    [self selectedIndexChange];
-    if (self.subViewControllers && self.subViewControllers.count) {
-        [self.contentScrollView setContentOffset:CGPointMake(selectedIndex*self.contentScrollView.frame.size.width, 0) animated:YES];
     }
 }
 
@@ -241,9 +245,6 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
             if (_isVertical) {
 //                [[NSNotificationCenter defaultCenter] postNotificationName:GLMainScrollViewGestureRecognizerStateEnded object:self.mainScrollView];
                 if (self.mainScrollView.contentOffset.y <= self.mainScrollView.mj_header.frame.origin.y) {
-//                    UIEdgeInsets inset = self.mainScrollView.contentInset;
-//                    inset.top = 100;
-//                    self.mainScrollView.contentInset = inset;
                     if (!self.mainScrollView.mj_header.refreshing) {
                         [self.mainScrollView.mj_header beginRefreshing];
                         NSLog(@"开始刷新");
@@ -384,10 +385,12 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
             vc.selectedIndex = self.selectedIndex;
             if (i == self.selectedIndex) {
                 [vc currentSelected];
+                if (!self.mainScrollView.mj_header.refreshing) {
+                    self.mainScrollView.mj_header = vc.gl_mj_header;
+                }
             }
         }
     }
-    
 }
 
 - (void)dealloc {
