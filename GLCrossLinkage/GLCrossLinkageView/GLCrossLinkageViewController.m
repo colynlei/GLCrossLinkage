@@ -168,7 +168,7 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         [self addChildViewController:vc];
         vc.gl_mj_header_refreshEndBlock = ^(NSInteger currentIndex) {
             [weakself.mainScrollView.mj_header endRefreshingWithCompletionBlock:^{
-                NSLog(@"刷新结束==%ld",currentIndex);
+                NSLog(@"刷新结束==%ld",(long)currentIndex);
                 GLCrossLinkageSubViewController *vc = weakself.subViewControllers[weakself.selectedIndex];
                 weakself.mainScrollView.mj_header = vc.gl_mj_header;
             }];
