@@ -52,6 +52,6 @@ gl_ColorRGBA(arc4random_uniform(256),arc4random_uniform(256),arc4random_uniform(
 
 //弱引用
 #define gl_WeakSelf(type)   __weak typeof(type) weak##type = type;
-#define gl_StrongSelf(type) __strong typeof(type) strongSelf = weak##type;
+#define gl_StrongSelf(type) __strong typeof(type) strong##type = weak##type;
 
 #endif /* GLCrossLinkageMacro_h */

@@ -166,12 +166,18 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         vc.currentIndex = i;
         [self.contentScrollView addSubview:vc.view];
         [self addChildViewController:vc];
-        vc.gl_mj_header_refreshEndBlock = ^(NSInteger currentIndex) {
+        vc.gl_mj_header_refreshEndBlock = ^(NSInteger currentIndex, UIScrollView *subScrollView) {
             [weakself.mainScrollView.mj_header endRefreshingWithCompletionBlock:^{
                 NSLog(@"刷新结束==%ld",(long)currentIndex);
-                GLCrossLinkageSubViewController *vc = weakself.subViewControllers[weakself.selectedIndex];
-                weakself.mainScrollView.mj_header = vc.gl_mj_header;
+                GLCrossLinkageSubViewController *currentVC= weakself.subViewControllers[weakself.selectedIndex];
+                weakself.mainScrollView.mj_header = currentVC.gl_mj_header;
             }];
+        };
+        vc.gl_mj_footer_refreshEndBlock = ^(NSInteger currentIndex, UIScrollView *subScrollView, SEL endAction) {
+            NSLog(@"上拉加载结束==%ld",currentIndex);
+            if ([subScrollView.mj_footer respondsToSelector:endAction]) {
+                [subScrollView.mj_footer performSelector:endAction];
+            }
         };
     }
     self.contentScrollView.contentSize = CGSizeMake(subViewControllers.count*w, h);
@@ -245,9 +251,22 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
             if (_isVertical) {
 //                [[NSNotificationCenter defaultCenter] postNotificationName:GLMainScrollViewGestureRecognizerStateEnded object:self.mainScrollView];
                 if (self.mainScrollView.contentOffset.y <= self.mainScrollView.mj_header.frame.origin.y) {
-                    if (!self.mainScrollView.mj_header.refreshing) {
-                        [self.mainScrollView.mj_header beginRefreshing];
-                        NSLog(@"开始刷新");
+                    if (self.mainScrollView.mj_header.state == MJRefreshStateIdle) {
+                        
+                        BOOL isFooterRefresh = NO;
+                        for (GLCrossLinkageSubViewController *vc in self.subViewControllers) {
+                            if (vc.scrollView.mj_footer.refreshing) {
+                                isFooterRefresh = YES;
+                                break;
+                            }
+                        }
+                        if (isFooterRefresh == NO) {
+                            [self.mainScrollView.mj_header beginRefreshing];
+                        }
+                    }
+                } else if (self.subScrollView.contentOffset.y > (((self.subScrollView.contentSize.height - self.subScrollView.frame.size.height > 0)?(self.subScrollView.contentSize.height - self.subScrollView.frame.size.height):0)+self.subScrollView.mj_footer.frame.size.height)) {
+                    if (!self.mainScrollView.mj_header.refreshing && self.subScrollView.mj_footer.state == MJRefreshStateIdle) {
+                        [self.subScrollView.mj_footer beginRefreshing];
                     }
                 }
 
@@ -280,6 +299,14 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
     [pan setTranslation:CGPointZero inView:self.mainScrollView];
 }
 
+- (CGFloat)bottomOutsideOffsetY {
+    if (self.subScrollView.contentSize.height > self.subScrollView.frame.size.height) {
+        return self.subScrollView.contentSize.height - self.subScrollView.frame.size.height+self.subScrollView.contentInset.bottom;
+    } else {
+        return self.subScrollView.mj_footer.refreshing?self.subScrollView.mj_footer.frame.size.height:0;
+    }
+}
+
 - (void)scrollControlWithVerticalDistance:(CGFloat)distanceY state:(UIGestureRecognizerState)state{
     if (self.mainScrollView.contentOffset.y >= _mainMaxOffsetY || (self.subScrollView.contentOffset.y && distanceY >= 0)) {
 //        NSLog(@"111");
@@ -287,8 +314,8 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         if (subOffsetY < 0) {
             subOffsetY = 0;
             self.mainScrollView.contentOffset = CGPointMake(0, self.mainScrollView.contentOffset.y-distanceY);
-        } else if (subOffsetY > (self.subScrollView.contentSize.height - self.subScrollView.frame.size.height)) {
-            subOffsetY = self.subScrollView.contentOffset.y - rubberBandDistance(distanceY, self.mainScrollView.frame.size.height);
+        } else if (subOffsetY > [self bottomOutsideOffsetY]) {
+            subOffsetY = self.subScrollView.contentOffset.y - rubberBandDistance(distanceY, self.subScrollView.frame.size.height);
         }
         self.subScrollView.contentOffset = CGPointMake(0, subOffsetY);
     } else {
@@ -305,7 +332,7 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         }
     }
     
-    BOOL isOutside = self.mainScrollView.contentOffset.y < -self.mainScrollView.contentInset.top || self.subScrollView.contentOffset.y > (self.subScrollView.contentSize.height - self.subScrollView.frame.size.height);
+    BOOL isOutside = self.mainScrollView.contentOffset.y < -self.mainScrollView.contentInset.top || self.subScrollView.contentOffset.y > [self bottomOutsideOffsetY];
     BOOL isMore = self.subScrollView.contentSize.height >= self.subScrollView.frame.size.height || self.mainScrollView.contentOffset.y >= _mainMaxOffsetY || self.mainScrollView.contentOffset.y < -self.mainScrollView.contentInset.top;
     if (isOutside && isMore && self.decelerationBehavior && !self.springBehavior) {
         CGPoint point = CGPointZero;
@@ -314,12 +341,12 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
             self.dynamicItem.center = self.mainScrollView.contentOffset;
             point = CGPointMake(0, -self.mainScrollView.contentInset.top);
             isMain = YES;
-        } else if (self.subScrollView.contentOffset.y > (self.subScrollView.contentSize.height-self.subScrollView.frame.size.height)) {
+        } else if (self.subScrollView.contentOffset.y > [self bottomOutsideOffsetY]) {
             self.dynamicItem.center = self.subScrollView.contentOffset;
-            point = CGPointMake(self.subScrollView.contentOffset.x, self.subScrollView.contentSize.height-self.subScrollView.frame.size.height);
-            if (self.subScrollView.contentSize.height <= self.subScrollView.frame.size.height) {
-                point = CGPointMake(self.subScrollView.contentOffset.x, 0);
-            }
+            point = CGPointMake(self.subScrollView.contentOffset.x, [self bottomOutsideOffsetY]);
+//            if (self.subScrollView.contentSize.height <= self.subScrollView.frame.size.height) {
+//                point = CGPointMake(self.subScrollView.contentOffset.x, self.subScrollView.contentInset.bottom);
+//            }
             isMain = NO;
         }
         [self.animator removeBehavior:self.decelerationBehavior];
