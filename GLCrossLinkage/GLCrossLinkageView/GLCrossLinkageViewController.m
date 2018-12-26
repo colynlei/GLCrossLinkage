@@ -52,6 +52,8 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
 @property (nonatomic, weak) UIDynamicItemBehavior *decelerationBehavior;
 @property (nonatomic, weak) UIAttachmentBehavior *springBehavior;
 
+@property (nonatomic, assign) BOOL isDynamic;
+
 @end
 
 @implementation GLCrossLinkageViewController
@@ -71,6 +73,8 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
     self.dynamicItem = [[GLDynamicItem alloc] init];
     
     [self resetMainScrollViewContentSize];
+    
+    self.isDynamic = YES;
 }
 
 - (UIScrollView *)mainScrollView {
@@ -263,6 +267,7 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
                             }
                         }
                         if (isFooterRefresh == NO) {
+                            self.isDynamic = NO;
                             [self.mainScrollView.mj_header beginRefreshing];
 //                            [self.animator removeAllBehaviors];
                         }
@@ -270,9 +275,10 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
                 } else if (self.subScrollView.contentOffset.y > (((self.subScrollView.contentSize.height - self.subScrollView.frame.size.height > 0)?(self.subScrollView.contentSize.height - self.subScrollView.frame.size.height):0)+self.subScrollView.mj_footer.frame.size.height)) {
                     if (!self.mainScrollView.mj_header.refreshing && self.subScrollView.mj_footer.state == MJRefreshStateIdle) {
                         [self.subScrollView.mj_footer beginRefreshing];
+                        self.isDynamic = NO;
                     }
                 }
-                {
+                if (self.isDynamic) {
                     self.dynamicItem.center = CGPointZero;
                     
                     CGPoint velocity = [pan velocityInView:self.mainScrollView];
@@ -293,6 +299,7 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
                     [self.animator addBehavior:inertialBehavior];
                     self.decelerationBehavior = inertialBehavior;
                 }
+                self.isDynamic = YES;
             }
         }
             break;
@@ -348,9 +355,9 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         } else if (self.subScrollView.contentOffset.y > [self bottomOutsideOffsetY]) {
             self.dynamicItem.center = self.subScrollView.contentOffset;
             point = CGPointMake(self.subScrollView.contentOffset.x, [self bottomOutsideOffsetY]);
-//            if (self.subScrollView.contentSize.height <= self.subScrollView.frame.size.height) {
-//                point = CGPointMake(self.subScrollView.contentOffset.x, self.subScrollView.contentInset.bottom);
-//            }
+            if (self.subScrollView.contentSize.height <= self.subScrollView.frame.size.height) {
+                point = CGPointMake(self.subScrollView.contentOffset.x, self.subScrollView.contentInset.bottom);
+            }
             isMain = NO;
         }
         [self.animator removeBehavior:self.decelerationBehavior];
@@ -359,7 +366,7 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         UIAttachmentBehavior *springBehavior = [[UIAttachmentBehavior alloc] initWithItem:self.dynamicItem attachedToAnchor:point];
         springBehavior.length = 0;
         springBehavior.damping = 1;
-        springBehavior.frequency = self.mainScrollView.userInteractionEnabled?2:0;
+        springBehavior.frequency = 2;
         springBehavior.action = ^{
             gl_StrongSelf(self);
             if (isMain) {
