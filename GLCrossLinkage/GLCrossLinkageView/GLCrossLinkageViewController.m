@@ -187,7 +187,6 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
     [self setSelectedIndex:self.selectedIndex];
 }
 
-
 - (void)resetMainScrollViewContentSize {
 //    _mainMaxOffsetY = self.headerView.frame.size.height+self.HoverViewOffsetY;
     [self setHoverViewOffsetY:self.HoverViewOffsetY];
@@ -231,6 +230,7 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
 
 - (void)panGesturerRecognizerAction:(UIPanGestureRecognizer *)pan {
     self.isStopAnimation = NO;
+    NSLog(@"%ld",(long)pan.state);
     switch (pan.state) {
         case UIGestureRecognizerStateBegan:
         {
@@ -264,6 +264,7 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
                         }
                         if (isFooterRefresh == NO) {
                             [self.mainScrollView.mj_header beginRefreshing];
+//                            [self.animator removeAllBehaviors];
                         }
                     }
                 } else if (self.subScrollView.contentOffset.y > (((self.subScrollView.contentSize.height - self.subScrollView.frame.size.height > 0)?(self.subScrollView.contentSize.height - self.subScrollView.frame.size.height):0)+self.subScrollView.mj_footer.frame.size.height)) {
@@ -273,10 +274,11 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
                 }
                 {
                     self.dynamicItem.center = CGPointZero;
+                    
                     CGPoint velocity = [pan velocityInView:self.mainScrollView];
                     UIDynamicItemBehavior *inertialBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.dynamicItem]];
                     [inertialBehavior addLinearVelocity:CGPointMake(0, velocity.y) forItem:self.dynamicItem];
-                    inertialBehavior.resistance = 5.0;
+                    inertialBehavior.resistance = 2;
                     
                     __block CGPoint lastCenter = CGPointZero;
                     gl_WeakSelf(self);
@@ -357,7 +359,7 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         UIAttachmentBehavior *springBehavior = [[UIAttachmentBehavior alloc] initWithItem:self.dynamicItem attachedToAnchor:point];
         springBehavior.length = 0;
         springBehavior.damping = 1;
-        springBehavior.frequency = 2;
+        springBehavior.frequency = self.mainScrollView.userInteractionEnabled?2:0;
         springBehavior.action = ^{
             gl_StrongSelf(self);
             if (isMain) {
