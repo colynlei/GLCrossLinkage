@@ -23,9 +23,10 @@
     self.scrollView = self.tableView;
     gl_WeakSelf(self);
     self.gl_mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        NSLog(@"下拉刷新==%ld",weakself.currentIndex);
+        gl_StrongSelf(self);
+        NSLog(@"下拉刷新==%ld",strongself.currentIndex);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            weakself.gl_mj_header_refreshEndBlock(weakself.currentIndex,weakself.scrollView);
+            strongself.gl_mj_header_refreshEndBlock(strongself.currentIndex,strongself.scrollView);
         });
     }];
 }

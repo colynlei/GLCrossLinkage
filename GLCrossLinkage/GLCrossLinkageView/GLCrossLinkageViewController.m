@@ -167,10 +167,12 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         [self.contentScrollView addSubview:vc.view];
         [self addChildViewController:vc];
         vc.gl_mj_header_refreshEndBlock = ^(NSInteger currentIndex, UIScrollView *subScrollView) {
-            [weakself.mainScrollView.mj_header endRefreshingWithCompletionBlock:^{
+            gl_StrongSelf(self);
+            [strongself.mainScrollView.mj_header endRefreshingWithCompletionBlock:^{
+                gl_StrongSelf(self);
                 NSLog(@"刷新结束==%ld",(long)currentIndex);
-                GLCrossLinkageSubViewController *currentVC= weakself.subViewControllers[weakself.selectedIndex];
-                weakself.mainScrollView.mj_header = currentVC.gl_mj_header;
+                GLCrossLinkageSubViewController *currentVC= strongself.subViewControllers[strongself.selectedIndex];
+                strongself.mainScrollView.mj_header = currentVC.gl_mj_header;
             }];
         };
         vc.gl_mj_footer_refreshEndBlock = ^(NSInteger currentIndex, UIScrollView *subScrollView, SEL endAction) {
@@ -269,7 +271,6 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
                         [self.subScrollView.mj_footer beginRefreshing];
                     }
                 }
-
                 {
                     self.dynamicItem.center = CGPointZero;
                     CGPoint velocity = [pan velocityInView:self.mainScrollView];
@@ -280,11 +281,12 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
                     __block CGPoint lastCenter = CGPointZero;
                     gl_WeakSelf(self);
                     inertialBehavior.action = ^{
+                        gl_StrongSelf(self);
                         if (self->_isVertical) {
-                            CGFloat currentY = weakself.dynamicItem.center.y - lastCenter.y;
-                            [weakself scrollControlWithVerticalDistance:currentY state:pan.state];
+                            CGFloat currentY = strongself.dynamicItem.center.y - lastCenter.y;
+                            [strongself scrollControlWithVerticalDistance:currentY state:pan.state];
                         }
-                        lastCenter = weakself.dynamicItem.center;
+                        lastCenter = strongself.dynamicItem.center;
                     };
                     [self.animator addBehavior:inertialBehavior];
                     self.decelerationBehavior = inertialBehavior;
@@ -357,13 +359,14 @@ static CGFloat rubberBandDistance(CGFloat offset, CGFloat dimension) {
         springBehavior.damping = 1;
         springBehavior.frequency = 2;
         springBehavior.action = ^{
+            gl_StrongSelf(self);
             if (isMain) {
-                weakself.mainScrollView.contentOffset = weakself.dynamicItem.center;
-                if (weakself.mainScrollView.contentOffset.y == 0) {
-                    weakself.subScrollView.contentOffset = CGPointZero;
+                strongself.mainScrollView.contentOffset = strongself.dynamicItem.center;
+                if (strongself.mainScrollView.contentOffset.y == 0) {
+                    strongself.subScrollView.contentOffset = CGPointZero;
                 }
             } else {
-                weakself.subScrollView.contentOffset = weakself.dynamicItem.center;
+                strongself.subScrollView.contentOffset = strongself.dynamicItem.center;
             }
         };
         [self.animator addBehavior:springBehavior];

@@ -33,9 +33,10 @@
         gl_WeakSelf(self);
         
         _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-            NSLog(@"上啦加载==%ld",weakself.currentIndex);
+            gl_StrongSelf(self);
+            NSLog(@"上啦加载==%ld",strongself.currentIndex);
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                weakself.gl_mj_footer_refreshEndBlock(weakself.currentIndex,weakself.scrollView,@selector(endRefreshingWithNoMoreData));
+                strongself.gl_mj_footer_refreshEndBlock(strongself.currentIndex,strongself.scrollView,@selector(endRefreshingWithNoMoreData));
             });
         }];
     }

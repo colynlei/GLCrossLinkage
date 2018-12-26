@@ -41,7 +41,8 @@
 
     gl_WeakSelf(self);
     hoverView.itemSelectedBlock = ^(NSInteger index) {
-        weakself.selectedIndex = index;
+        gl_StrongSelf(self);
+        strongself.selectedIndex = index;
     };
     self.headerHoverView = hoverView;
     
